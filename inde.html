@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        #myInput {
+            background-position: 10px 12px;
+            background-repeat: no-repeat;
+            width: 100%;
+            font-size: 20px;
+            padding: 12px 20px 12px 40px;
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
+        }
+        
+        #myUL {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        #myUL li a {
+            border: 1px solid #ddd;
+            /* Prevent double borders */
+            background-color: #f6f6f6;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            display: block;
+        }
+        
+        #myUL li a:hover:not(.header) {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>My Phonebook</h2>
+
+    <input type="text" id="myInput" onkeyup="myfunction()" placeholder="please enter your anything from your list..">
+
+    <ul id="myUL">
+        <li><a href="#">Adele</a></li>
+        <li><a href="#">Agnes</a></li>
+
+        <li><a href="#">Billy</a></li>
+        <li><a href="#">Bob</a></li>
+
+        <li><a class="header" href="#">Calvin</a></li>
+        <li><a href="#">Christina</a></li>
+        <li><a href="#">Raushan kumar</a></li>
+    </ul>
+
+    <script>
+        function myfunction() {
+            let list_length = document.getElementById('myUL').getElementsByTagName('li').length;
+            let list_text = document.getElementById('myUL').getElementsByTagName('li');
+
+            let myinput = document.getElementById('myInput').value.toUpperCase();
+            for (let i = 0; i < list_length; i++) {
+
+                let text = list_text[i].innerText.toUpperCase();
+                if (text.indexOf(myinput) > -1) {
+
+                    list_text[i].style.display = "block";
+                } else {
+                    list_text[i].style.display = "none";
+                }
+
+
+            }
+
+
+
+        }
+    </script>
+
+</body>
+
+</html>
